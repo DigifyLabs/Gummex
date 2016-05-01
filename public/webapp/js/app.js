@@ -179,7 +179,7 @@ var app = {
             $('#create_order_button').prop('disabled',true);
                 console.log(data);
             $.ajax({
-                url:"http://localhost/Gummex/public/api/v/0.1/orders",
+                url:api_route,
                 method:"POST",
                 data:data,
                 success:function(res){
@@ -189,7 +189,7 @@ var app = {
                         if($('input[name="payment"]:checked').val() == 1)
                         {
                             //smoke.alert('Congratulations, hatem');
-                             window.location="http://localhost/Gummex/public/home/"+res.order_id;
+                             window.location=paypal_route+"?order_id="+res.order_id;
                             return "hatem";
 
                         }

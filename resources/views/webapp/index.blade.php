@@ -161,7 +161,7 @@
 
 						<select style="margin-left:40px" name="zip" id="zip"  data-live-search="true" title="Enter your postal code" class="form-control selectpicker how-menu-arrow" data-width="90%">
 
-							@foreach($getall as $code)
+						@foreach($codes as $code)
 								<option data-price="{{$code->price}}" >{{$code->code}}</option>
 						@endforeach
 
@@ -559,6 +559,8 @@
 
 <script type="text/javascript">
 
+	var paypal_route = "{{route('paypal')}}"
+	var api_route = "{{route('APISaveOrder')}}"
 	$(document).ready(function(e){
 		$('#date').pickadate()
 

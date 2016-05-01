@@ -2,7 +2,7 @@
 
 use Gummex\OrderDetails ;
 use Gummex\Order ;
-use Gummex\Booking ;
+use Gummex\PostCode ;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,30 +16,14 @@ use Gummex\Booking ;
 
 // Web App route
 Route::get('booking',function(){
-	$getall=  Booking::getcodes();
-	return view('webapp.index',['getall'=>$getall]);
+	$codes =  PostCode::getcodes();
+	return view('webapp.index',compact('codes'));
 });
 
-Route::get('sendemail', function () {
-
-    // $data = array(
-    //     'name' => "gummex test",
-    // );
-		//
-    // Mail::send('emails.welcome', $data, function ($message) {
-		//
-    //     $message->from('info@gummex.com', 'Gummex');
-		//
-    //     $message->to('emadelmogy619@gmail.com')->subject('gummex test email1');
-		//
-    // });
-		$order= Order::find(1);
-	 echo	$order->sendInvoice();
-
-    // return "Your email has been sent successfully";
-
+Route::get('/test', function(){
+	$order = Order::first();
+	dd($order->sendInvoice());
 });
-
 //Admin Routes
 Route::group(['prefix'=>'admin'], function(){
 	Route::get('/', 'OrdersController@index')->name('listOrders');
@@ -57,25 +41,22 @@ Route::group(['prefix'=>'admin'], function(){
 
 	Route::get('/extras/view/{id}', 'ExtrasController@view')->name('viewExtras');
 
+	Route::get('/codes/all', 'PostCodesController@showAllcodes')->name('bookingall');
+
+	Route::get('/codes/add', 'PostCodesController@showAddcodes')->name('bookingadd');
+	Route::post('/codes/add', 'PostCodesController@doAddcodes');
+
+	Route::get('/codes/import', 'PostCodesController@showImport')->name('bookingimport');
+	Route::post('/codes/import', 'PostCodesController@doImport');
+
+	Route::get('/codes/edit/{id}','PostCodesController@showEdit')->name('edit');
+	Route::post('/codes/edit/{id}','PostCodesController@doEdit');
+	Route::get('/codes/delete/{id}','PostCodesController@showDelete')->name('delete');
 });
 
 
-Route::get('/booking/all', 'BookingController@showAllcodes')->name('bookingall');
-
-Route::get('/booking/add', 'BookingController@showAddcodes')->name('bookingadd');
-Route::post('/booking/add', 'BookingController@doAddcodes');
-
-Route::get('/booking/import', 'BookingController@showImport')->name('bookingimport');
-Route::post('/booking/import', 'BookingController@doImport');
-
-Route::get('/booking/edit/{id}','BookingController@showEdit')->name('edit');
-Route::post('/booking/edit/{id}','BookingController@doEdit');
-Route::get('/booking/delete/{id}','BookingController@showDelete')->name('delete');
-
-
-
 //API
-Route::post('/api/v/0.1/orders', 'WSController@saveOrder');
+Route::post('/api/v/0.1/orders', 'WSController@saveOrder')->name('APISaveOrder');
 
-Route::get('home/{order_id}','PaypalController@paypal');
+Route::get('/paypal','PaypalController@paypal')->name('paypal');
 

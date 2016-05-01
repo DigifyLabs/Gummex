@@ -17,9 +17,9 @@
                           </td>
 
                           <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-                              Invoice #: {{$invoice->order_id}}<br>
-                              Created: {{$invoice->date}}<br>
-                              Due: {{$invoice->date}}
+                              Invoice #: {{$order->id}}<br>
+                              Created: {{$order->created_at}}<br>
+                              Due: {{$order->updated_at}}
                           </td>
                       </tr>
                   </table>
@@ -38,8 +38,8 @@
 
                           <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 40px;">
                               Acme Corp.<br>
-                              {{$invoice->name}}<br>
-                              {{$invoice->email}}
+                              {{$order->order_details->name}}<br>
+                              {{$order->order_details->email}}
                           </td>
                       </tr>
                   </table>
@@ -58,11 +58,11 @@
 
           <tr class="details">
               <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-                  {{$invoice->label}}
+
               </td>
 
               <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-                  1000
+
               </td>
           </tr>
 
@@ -75,11 +75,8 @@
                   Price
               </td>
           </tr>
-          <?php $extras=\DB::table('extras')
-                           ->join('order_extras','extras.id','=','order_extras.extra_id')
-                           ->where('order_extras.order_id',$invoice->order_id)
-                           ->get();?>
-      @foreach($extras as $extra)
+
+      @foreach($order->extras as $extra)
           <tr class="item">
               <td style="padding: 5px;vertical-align: top;border-bottom: 1px solid #eee;">
                   {{$extra->label}}
@@ -96,7 +93,7 @@
               <td style="padding: 5px;vertical-align: top;"></td>
 
               <td style="padding: 5px;vertical-align: top;text-align: right;border-top: 2px solid #eee;font-weight: bold;">
-                 Total: {{$invoice->total}}
+                 Total: {{$order->order_details->total}}
               </td>
           </tr>
       </table>

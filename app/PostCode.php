@@ -4,7 +4,7 @@ namespace Gummex;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Booking extends Model
+class PostCode extends Model
 {
     //
 public static function showallcodes(){

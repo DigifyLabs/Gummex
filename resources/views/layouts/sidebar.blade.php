@@ -33,20 +33,19 @@
                 </a>
             </li>
             <!-- Extras -->
-            <li class="treeview">
+            <li class="treeview @if($active == "extras") active @endif">
                 <a href="#">
                     <i class="fa fa-plus"></i> <span>Extras</span>
-                    <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li><a href="{{route('listExtras')}}"><i class="fa fa-circle-o"></i> List</a></li>
                     <li><a href="{{route('createExtra')}}"><i class="fa fa-circle-o"></i> Add New Extra</a></li>
                 </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview @if($active == "postcodes") active @endif" >
                 <a href="#">
                     <i class="fa fa-files-o"></i>
-                    <span>Booking</span>
+                    <span>Post Codes</span>
                     <span class="label label-primary pull-right"></span>
                 </a>
                 <ul class="treeview-menu">
@@ -129,7 +128,7 @@
                     <small class="label pull-right bg-yellow">12</small>
                 </a>
             </li>
-            <li class="treeview active">
+            <li class="treeview ">
                 <a href="#">
                     <i class="fa fa-folder"></i> <span>Examples</span>
                     <i class="fa fa-angle-left pull-right"></i>

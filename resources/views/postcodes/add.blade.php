@@ -1,7 +1,8 @@
 @extends('layouts.base')
-@extends('layouts.header')
-@extends('layouts.sidebar')
+
 @section('body')
+    @include('layouts.header')
+    @include('layouts.sidebar', ['active'=>'postcodes'])
 
     <div class="content-wrapper">
         <!-- Content Header (Page header) -->
@@ -32,18 +33,21 @@
                     </div>
                 @endif
                 <div class="box-body">
-                    <h2>Import codes from Excel File</h2><br><br>
-                    <form role="form" action="" method="post"  enctype="multipart/form-data">
+                    <h2>Add New Single Code</h2><br><br>
+
+                    <form role="form" action="" method="post">
                         <!-- text input -->
                         <div class="form-group">
-                            <label> File Location </label><br>
+                            <label> Code </label><br>
 
-                            <input type="file" value="" class="form-control" name="file" placeholder="Enter ..."><br>
+                            <input type="text" value="" class="form-control" name="code" placeholder="Enter ..."><br>
+                            <label>Price</label><br>
+                            <input type="text" value="" class="form-control" name="price" placeholder="Enter ..."><br>
 
                         </div>
 
                         {!!    csrf_field()   !!}
-                        <button type="submit" class="btn btn-primary">Save </button>
+                        <button type="submit" class="btn btn-primary">Save</button>
                     </form>
 
 

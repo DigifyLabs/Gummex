@@ -52,20 +52,16 @@ class Order extends Model
 			}
 
 			// determine and save payment details
+			$payment_details = new PaymentDetails(
+				[
+					'order_id' => $this->id,
+					'status' => 'pending',
+					'data'   => json_encode($data['payment_details'])
+				]
+			);
+			if(!$payment_details->save())
+				return response()->json(['status'=>false,'errors'=>$payment_details->errors()]);
 
-			//if($this->payment_method->gateway === 0)
-			{
-				// payment details should be saved on our side
-				$payment_details = new PaymentDetails(
-					[
-						'order_id' => $this->id,
-						'status' => 'pending',
-						'data'   => json_encode($data['payment_details'])
-					]
-				);
-				if(!$payment_details->save())
-					return response()->json(['status'=>false,'errors'=>$payment_details->errors()]);
-			}
 			$this->sendInvoice();
 			return response()->json(['status'=>true,'order_id'=>$this->id]);
 		}
@@ -76,21 +72,16 @@ class Order extends Model
 	}
 
 	public function sendInvoice(){
-		$invoice=\DB::table('orders')
-		              ->join('payment_methods','orders.payment_method_id','=','payment_methods.id')
-									->join('order_extras','orders.id','=','order_extras.order_id')
-									->join('order_details','orders.id','=','order_details.order_id')
-									->where('orders.id',$this->id)
-									->first();
 
-									\Mail::send('emails.welcome', compact('invoice'), function ($message) {
+		$order = $this;
+		\Mail::send('emails.invoice', compact('order'), function ($message) {
 
-					 	         $message->from('info@gummex.com', 'Gummex');
+			$message->from('info@gummex.com', 'Gummex');
 
-					 	         $message->to('emadelmogy619@gmail.com')->subject('gummex test email1');
+			$message->to('sherifmesallam@gmail.com')->subject('Gummex Invoice');
 
-					 	     });
+		});
 
-					 	     return "Your email has been sent successfully";
+         return "Your email has been sent successfully";
 	}
 }

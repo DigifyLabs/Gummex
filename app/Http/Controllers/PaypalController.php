@@ -11,8 +11,9 @@ use Gummex\Order;
 class PaypalController extends Controller
 {
     //
-    public function paypal($order_id)
+    public function paypal(Request $request)
     {
+        $order_id = $request->get('order_id');
         //return $order_id;
         $order=Order::find($order_id);
         //return $order;

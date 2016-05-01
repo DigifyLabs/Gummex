@@ -8,7 +8,7 @@
 @section('body')
     <div class="wrapper">
         @include('layouts.header')
-        @include('layouts.sidebar')
+        @include('layouts.sidebar' , ['active'=>'extras']))
 
                 <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
