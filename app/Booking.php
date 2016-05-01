@@ -49,4 +49,9 @@ public static function addcode($request){
 
 }
 
+    public static function getcodes(){
+        $getall= \DB::table('codes')->orderby('id','desc')->get();
+        return $getall;
+    }
+
 }

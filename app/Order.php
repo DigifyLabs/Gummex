@@ -74,4 +74,5 @@ class Order extends Model
 			return response()->json(['status'=>false,'errors'=>$this->errors()]);
 		}
 	}
+
 }

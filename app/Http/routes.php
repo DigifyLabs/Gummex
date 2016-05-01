@@ -2,7 +2,7 @@
 
 use Gummex\OrderDetails ;
 use Gummex\Order ;
-
+use Gummex\Booking ;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -16,7 +16,8 @@ use Gummex\Order ;
 
 // Web App route
 Route::get('booking',function(){
-	return view('webapp.index');
+	$getall=  Booking::getcodes();
+	return view('webapp.index',['getall'=>$getall]);
 });
 
 //Admin Routes
