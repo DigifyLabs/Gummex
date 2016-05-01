@@ -160,10 +160,12 @@
 						</div>
 
 						<select style="margin-left:40px" name="zip" id="zip"  data-live-search="true" title="Enter your postal code" class="form-control selectpicker how-menu-arrow" data-width="90%">
-							<option data-price="40" >23324</option>
-							<option data-price="50" >42343</option>
-							<option data-price="60" >12334</option>
-							<option data-price="70" >42325</option>
+
+							@foreach($getall as $code)
+								<option data-price="{{$code->price}}" >{{$code->code}}</option>
+						@endforeach
+
+
 						</select>
 					</div>
 				</div>
