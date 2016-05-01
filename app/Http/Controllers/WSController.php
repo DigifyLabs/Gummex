@@ -19,5 +19,7 @@ class WSController extends Controller
     {
 		$order = new Order($request->all());
 	    return $order->store($request->all());
+//       $aa=$order->store($request->all());
+//       dd($aa);
     }
 }

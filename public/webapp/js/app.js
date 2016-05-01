@@ -164,17 +164,37 @@ var app = {
                 }
                 data.payment_details = payment_data;
             }
+
+            if($('input[name="payment"]:checked').val() == 1)
+            {
+
+                payment_data = {
+                    name:"Paypal"
+                }
+                data.payment_details = payment_data;
+
+            }
+
             $('#create_order_button').text('Processing');
             $('#create_order_button').prop('disabled',true);
                 console.log(data);
             $.ajax({
-                url:"http://thewebdeveloper.io/gummex/admin/public/index.php/api/v/0.1/orders",
+                url:"http://localhost/Gummex/public/api/v/0.1/orders",
                 method:"POST",
                 data:data,
                 success:function(res){
                     console.log(res);
                     if(res.status == true)
                     {
+                        if($('input[name="payment"]:checked').val() == 1)
+                        {
+                            //smoke.alert('Congratulations, hatem');
+                             window.location="http://localhost/Gummex/public/home/"+res.order_id;
+                            return "hatem";
+
+                        }
+
+
                         //$('.step_four').fadeOut();
                         smoke.alert('Congratulations, your order has been successfully created and a confirmation' +
                             ' email was sent to your email address');
