@@ -19,6 +19,26 @@ Route::get('booking',function(){
 	return view('webapp.index');
 });
 
+Route::get('sendemail', function () {
+
+    // $data = array(
+    //     'name' => "gummex test",
+    // );
+		//
+    // Mail::send('emails.welcome', $data, function ($message) {
+		//
+    //     $message->from('info@gummex.com', 'Gummex');
+		//
+    //     $message->to('emadelmogy619@gmail.com')->subject('gummex test email1');
+		//
+    // });
+		$order= Order::find(1);
+	 echo	$order->sendInvoice();
+
+    // return "Your email has been sent successfully";
+
+});
+
 //Admin Routes
 Route::group(['prefix'=>'admin'], function(){
 	Route::get('/', 'OrdersController@index')->name('listOrders');

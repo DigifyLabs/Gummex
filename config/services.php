@@ -15,8 +15,8 @@ return [
     */
 
     'mailgun' => [
-        'domain' => env('MAILGUN_DOMAIN'),
-        'secret' => env('MAILGUN_SECRET'),
+        'domain' => 'effortia.info',
+        'secret' => 'key-f8169ffba2b2087408cc3fe96aba8963',
     ],
 
     'ses' => [

@@ -66,12 +66,31 @@ class Order extends Model
 				if(!$payment_details->save())
 					return response()->json(['status'=>false,'errors'=>$payment_details->errors()]);
 			}
-
-			return response()->json(['status'=>true,'order_id'=>$data['payment_details']]);
+			$this->sendInvoice();
+			return response()->json(['status'=>true,'order_id'=>$this->id]);
 		}
 		else
 		{
 			return response()->json(['status'=>false,'errors'=>$this->errors()]);
 		}
+	}
+
+	public function sendInvoice(){
+		$invoice=\DB::table('orders')
+		              ->join('payment_methods','orders.payment_method_id','=','payment_methods.id')
+									->join('order_extras','orders.id','=','order_extras.order_id')
+									->join('order_details','orders.id','=','order_details.order_id')
+									->where('orders.id',$this->id)
+									->first();
+
+									\Mail::send('emails.welcome', compact('invoice'), function ($message) {
+
+					 	         $message->from('info@gummex.com', 'Gummex');
+
+					 	         $message->to('emadelmogy619@gmail.com')->subject('gummex test email1');
+
+					 	     });
+
+					 	     return "Your email has been sent successfully";
 	}
 }
