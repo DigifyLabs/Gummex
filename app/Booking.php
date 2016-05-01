@@ -9,7 +9,7 @@ class Booking extends Model
     //
 public static function showallcodes(){
 
-   return  $getall= \DB::table('codes')->orderby('id','desc')->paginate(5);
+   return  $getall= \DB::table('codes')->orderby('id','desc')->paginate(10);
 
 
 

@@ -114,7 +114,7 @@ public function showAddcodes(){
                      //insert values to database
                     //
                     foreach($results as $result) {
-                        $add = \DB::table('codes')->insert(['code'=>$result[0],'code'=>$result[1]]);
+                        $add = \DB::table('codes')->insert(['code'=>$result[0],'price'=>$result[1]]);
                     }
                 });
 return "ok";
