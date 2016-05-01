@@ -41,9 +41,9 @@
                 </a>
                 <ul class="treeview-menu">
 
-                    <li><a href="all"><i class="fa fa-circle-o"></i> Show All Codes</a></li>
-                    <li><a href="add/"><i class="fa fa-circle-o"></i> Add New Codes</a></li>
-                    <li><a href="import/"><i class="fa fa-circle-o"></i> Import codes from Excel</a></li>
+                    <li><a href="{{route('bookingall')}}"><i class="fa fa-circle-o"></i> Show All Codes</a></li>
+                    <li><a href="{{route('bookingadd')}}"><i class="fa fa-circle-o"></i> Add New Codes</a></li>
+                    <li><a href="{{route('bookingimport')}}"><i class="fa fa-circle-o"></i> Import codes from Excel</a></li>
                 </ul>
             </li>
             <li class="treeview">

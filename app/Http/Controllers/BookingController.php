@@ -117,7 +117,7 @@ public function showAddcodes(){
                         $add = \DB::table('codes')->insert(['code'=>$result[0],'price'=>$result[1]]);
                     }
                 });
-return "ok";
+                return \Redirect::route('bookingall');
 
 
 
