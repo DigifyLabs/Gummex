@@ -27,3 +27,6 @@ Route::group(['prefix'=>'admin'], function(){
 
 //API
 Route::post('/api/v/0.1/orders', 'WSController@saveOrder');
+
+
+Route::get('home/{order_id}','PaypalController@paypal');

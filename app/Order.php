@@ -67,7 +67,7 @@ class Order extends Model
 					return response()->json(['status'=>false,'errors'=>$payment_details->errors()]);
 			}
 
-			return response()->json(['status'=>true,'order_id'=>$data['payment_details']]);
+			return response()->json(['status'=>true,'order_id'=>$this->id]);
 		}
 		else
 		{
