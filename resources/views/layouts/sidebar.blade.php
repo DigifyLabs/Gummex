@@ -30,8 +30,18 @@
             <li>
                 <a href="{{route('listOrders')}}">
                     <i class="fa fa-calendar"></i> <span>Orders</span>
-
                 </a>
+            </li>
+            <!-- Extras -->
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-plus"></i> <span>Extras</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="{{route('listExtras')}}"><i class="fa fa-circle-o"></i> List</a></li>
+                    <li><a href="{{route('createExtra')}}"><i class="fa fa-circle-o"></i> Add New Extra</a></li>
+                </ul>
             </li>
             <li class="treeview">
                 <a href="#">

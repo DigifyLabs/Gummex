@@ -18,16 +18,20 @@
          folder instead of downloading all of them to reduce the load. -->
     {{HTML::style("css/skins/_all-skins.min.css")}}
 
+    @yield('style')
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
     <{{HTML::script("https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js")}}
     {{HTML::script("https://oss.maxcdn.com/respond/1.4.2/respond.min.js")}}
     <![endif]-->
+
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <!-- Site wrapper -->
 @yield('body')
+
 <!-- jQuery 2.1.4 -->
 {{HTML::script("plugins/jQuery/jQuery-2.1.4.min.js")}}
 <!-- Bootstrap 3.3.5 -->
@@ -40,5 +44,6 @@
 {{HTML::script("js/app.min.js")}}
 <!-- AdminLTE for demo purposes -->
 {{HTML::script("js/demo.js")}}
+@yield('script')
 </body>
 </html>
