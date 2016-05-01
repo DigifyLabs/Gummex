@@ -156,8 +156,8 @@ return [
         Gummex\Providers\EventServiceProvider::class,
         Gummex\Providers\RouteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
-        Former\FormerServiceProvider::class
-
+        Former\FormerServiceProvider::class,
+     Maatwebsite\Excel\ExcelServiceProvider::class
     ],
 
     /*
@@ -204,7 +204,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'HTML' => Collective\Html\HtmlFacade::class,
-        'Former' => Former\Facades\Former::class
+        'Former' => Former\Facades\Former::class,
+        'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
     ],
 
