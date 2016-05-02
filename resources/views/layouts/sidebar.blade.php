@@ -1,3 +1,4 @@
+<?php if(!isset($active)) $active = ""; ?>
         <!-- =============================================== -->
 
         <!-- Left side column. contains the sidebar -->
