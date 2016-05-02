@@ -9,7 +9,7 @@
     <!-- Bootstrap 3.3.5 -->
     {{HTML::style("bootstrap/css/bootstrap.min.css")}}
     <!-- Font Awesome -->
-    {{HTML::style("https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css")}}
+    {{HTML::style("https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css")}}
     <!-- Ionicons -->
     {{HTML::style("https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css")}}
     <!-- Theme style -->
@@ -18,6 +18,7 @@
          folder instead of downloading all of them to reduce the load. -->
     {{HTML::style("css/skins/_all-skins.min.css")}}
 
+    <!-- Custom style -->
     @yield('style')
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -44,6 +45,7 @@
 {{HTML::script("js/app.min.js")}}
 <!-- AdminLTE for demo purposes -->
 {{HTML::script("js/demo.js")}}
+<!-- Custom script -->
 @yield('script')
 </body>
 </html>
