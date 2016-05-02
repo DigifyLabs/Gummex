@@ -256,42 +256,6 @@
 									</div>
 								</div>
 							@endforeach
-							{{--<div class="extra" data-price="20"  data-id="2">--}}
-								{{--<div class="extra-icon">--}}
-									{{--<span class="icon"><i data-icon="fa-recycle" class="fa fa-recycle fa-1x"></i></span>--}}
-								{{--</div>--}}
-								{{--<div class="extra-text">--}}
-									{{--Tier recycling--}}
-								{{--</div>--}}
-							{{--</div>--}}
-
-							{{--<div class="extra" data-price="10"  data-id="3">--}}
-								{{--<div class="extra-icon">--}}
-									{{--<span class="icon"><i data-icon="fa-hand-grab-o" class="fa fa-hand-grab-o fa-1x"></i></span>--}}
-								{{--</div>--}}
-								{{--<div class="extra-text">--}}
-									{{--Rim cleaning--}}
-								{{--</div>--}}
-							{{--</div>--}}
-
-							{{--<div class="extra" data-price="35"  data-id="4">--}}
-								{{--<div class="extra-icon">--}}
-									{{--<span class="icon"><i data-icon="fa-wrench" class="fa fa-wrench fa-1x"></i></span>--}}
-								{{--</div>--}}
-								{{--<div class="extra-text">--}}
-									{{--Rim repair--}}
-								{{--</div>--}}
-							{{--</div>--}}
-
-							{{--<div class="extra" data-price="40"  data-id="5">--}}
-								{{--<div class="extra-icon">--}}
-									{{--<span class="icon"><i data-icon="fa-car" class="fa fa-car fa-1x"></i></span>--}}
-								{{--</div>--}}
-								{{--<div class="extra-text">--}}
-									{{--Car rental--}}
-								{{--</div>--}}
-							{{--</div>--}}
-
 						</div>
 					</div>
 					<!-- End Extras -->
