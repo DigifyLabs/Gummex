@@ -52,20 +52,20 @@
               </td>
 
               <td style="padding: 5px;vertical-align: top;text-align: right;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
-                  Check #
+                 Order Price
               </td>
           </tr>
 
           <tr class="details">
               <td style="padding: 5px;vertical-align: top;padding-bottom: 20px;">
-
+                 {{$order->payment_method->label}}
               </td>
 
               <td style="padding: 5px;vertical-align: top;text-align: right;padding-bottom: 20px;">
-
+                  {{$order->order_details->order_price}}
               </td>
           </tr>
-
+        @if($order->extras)
           <tr class="heading">
               <td style="padding: 5px;vertical-align: top;background: #eee;border-bottom: 1px solid #ddd;font-weight: bold;">
                   Item
@@ -88,7 +88,7 @@
           </tr>
 
    @endforeach
-
+   @endif
           <tr class="total">
               <td style="padding: 5px;vertical-align: top;"></td>
 
