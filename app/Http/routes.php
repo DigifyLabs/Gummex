@@ -1,5 +1,6 @@
 <?php
 
+use Gummex\Extra;
 use Gummex\OrderDetails ;
 use Gummex\Order ;
 use Gummex\PostCode ;
@@ -17,7 +18,8 @@ use Gummex\PostCode ;
 // Web App route
 Route::get('booking',function(){
 	$codes =  PostCode::getcodes();
-	return view('webapp.index',compact('codes'));
+	$extras = Extra::getExtras();
+	return view('webapp.index',compact('codes', 'extras'));
 });
 
 Route::get('/test', function(){

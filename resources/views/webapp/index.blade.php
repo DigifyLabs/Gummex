@@ -245,51 +245,17 @@
 					</div>
 					<div class="row extras">
 						<div class="col-xs-12">
-							<div class="extra" data-price="20" data-id="1">
-								<div class="extra-icon">
-									<span class="icon"><i data-icon="fa-caret-square-o-down" class="fa fa-caret-square-o-down
-									fa-1x"></i></span>
+							<!-- Loop through extras -->
+							@foreach($extras as $extra)
+								<div class="extra" data-price="{{ $extra->price }}" data-id="{{ $extra->id }}">
+									<div class="extra-icon">
+										<span class="icon"><i data-icon="{{ $extra->icon }}" class="fa {{ $extra->icon }} fa-1x"></i></span>
+									</div>
+									<div class="extra-text">
+										{{ $extra->label }}
+									</div>
 								</div>
-								<div class="extra-text">
-									Tier storage
-								</div>
-							</div>
-							<div class="extra" data-price="20"  data-id="2">
-								<div class="extra-icon">
-									<span class="icon"><i data-icon="fa-recycle" class="fa fa-recycle fa-1x"></i></span>
-								</div>
-								<div class="extra-text">
-									Tier recycling
-								</div>
-							</div>
-
-							<div class="extra" data-price="10"  data-id="3">
-								<div class="extra-icon">
-									<span class="icon"><i data-icon="fa-hand-grab-o" class="fa fa-hand-grab-o fa-1x"></i></span>
-								</div>
-								<div class="extra-text">
-									Rim cleaning
-								</div>
-							</div>
-
-							<div class="extra" data-price="35"  data-id="4">
-								<div class="extra-icon">
-									<span class="icon"><i data-icon="fa-wrench" class="fa fa-wrench fa-1x"></i></span>
-								</div>
-								<div class="extra-text">
-									Rim repair
-								</div>
-							</div>
-
-							<div class="extra" data-price="40"  data-id="5">
-								<div class="extra-icon">
-									<span class="icon"><i data-icon="fa-car" class="fa fa-car fa-1x"></i></span>
-								</div>
-								<div class="extra-text">
-									Car rental
-								</div>
-							</div>
-
+							@endforeach
 						</div>
 					</div>
 					<!-- End Extras -->
