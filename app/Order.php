@@ -38,6 +38,7 @@ class Order extends Model
 		{
 			// save order details
 			$data['order_id'] = $this->id;
+
 			$details = new OrderDetails($data);
 			$details->save();
 

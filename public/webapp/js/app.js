@@ -50,9 +50,8 @@ var app = {
 
                 // show next step
                 e.preventDefault();
-                $('.step_one').fadeOut();
+                $('.step_one').addClass('hidden');
                 $('.step_two').removeClass('hidden');
-                $('.step_two').fadeIn();
                 $('.top-step-two').addClass('step-process')
                 this.current_step = "two" ;
             }
@@ -65,9 +64,8 @@ var app = {
         two:function(e){
             // show next step
             e.preventDefault();
-            $('.step_two').fadeOut();
+            $('.step_two').addClass('hidden');
             $('.step_three').removeClass('hidden');
-            $('.step_three').fadeIn();
             $('.top-step-three').addClass('step-process')
             this.current_step = "three"
         },
@@ -81,7 +79,7 @@ var app = {
             var zip = $('#zip').val();
             var date = $('#date').val();
             var time = $('#time').val();
-            var total = $('.total').text();
+            var total = $('#finalTotal').text();
             var note = $('#order_note').val();
 
             if(name == "" || address == "" || phone == "" || email == "" )
@@ -106,9 +104,8 @@ var app = {
             if(name != "" && phone !== "" && address != "")
             {
                 e.preventDefault();
-                $('.step_three').fadeOut();
+                $('.step_three').addClass('hidden');
                 $('.step_four').removeClass('hidden');
-                $('.step_four').fadeIn();
                 $('.top-step-four').addClass('step-process')
                 this.current_step = "four";
             }
@@ -127,6 +124,7 @@ var app = {
                 phone : $('.order_phone').text(),
                 zip : $('.order_zip').text(),
                 total : $('.order_total').text(),
+                order_price : parseFloat($('.selectpicker').find(':selected').attr('data-price')),
                 payment_method_id : $('input[name="payment"]:checked').val(),
                 extras:{},
                 payment_details : ""
@@ -190,11 +188,9 @@ var app = {
                         {
                             //smoke.alert('Congratulations, hatem');
                              window.location=paypal_route+"?order_id="+res.order_id;
-                            return "hatem";
 
+                             return;
                         }
-
-
                         //$('.step_four').fadeOut();
                         smoke.alert('Congratulations, your order has been successfully created and a confirmation' +
                             ' email was sent to your email address');
@@ -206,13 +202,12 @@ var app = {
             if(this.current_step != "one")
             {
                 // Hide current step
-                $('.step_'+this.current_step).fadeOut();
+                $('.step_'+this.current_step).addClass('hidden');
                 $('.top-step-'+this.current_step).removeClass('step-process')
 
                 //Show previous one
                 var previous = this.get_previous_step();
                 $('.step_'+previous).removeClass('hidden');
-                $('.step_'+previous).fadeIn();
 
                 this.current_step = previous;
             }

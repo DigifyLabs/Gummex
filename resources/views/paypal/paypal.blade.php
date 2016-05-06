@@ -5,8 +5,7 @@
     <title>Checkout</title>
 </head>
 <body>
-{{$order->payment_method_id}}
-{{$order->order_details->total}}
+Please wait while redirecting to paypal...
 <form action="https://www.sandbox.paypal.com/cgi-bin/webscr" method="post">
     <input type="hidden" name="cmd" value="_cart">
     <input type="hidden" name="upload" value="1">
@@ -27,9 +26,10 @@
     <input type="hidden" name="cancel_return" value="http://digifylabs.com/pp/return.php?cancelled=true">
     <!-- where will Paypal send its POST request  -->
     <input type="hidden" name="notify_url" value="http://digifylabs.com/pp/ipn.php">
-    <!-- pay button -->
-    <input type="image" border="0" name="submit" src="http://images.paypal.com/images/x-click-but5.gif"
-           alt="Make payments with PayPal - it's fast, free and secure!">
+
 </form>
+<script type="text/javascript">
+    document.forms[0].submit();
+</script>
 </body>
 </html>

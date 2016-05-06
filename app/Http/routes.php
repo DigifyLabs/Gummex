@@ -21,7 +21,7 @@ Route::get('booking',function(){
 });
 
 Route::get('/test', function(){
-	$order = Order::first();
+	$order = Order::find(36);
 	dd($order->sendInvoice());
 });
 //Admin Routes
@@ -59,4 +59,5 @@ Route::group(['prefix'=>'admin'], function(){
 Route::post('/api/v/0.1/orders', 'WSController@saveOrder')->name('APISaveOrder');
 
 Route::get('/paypal','PaypalController@paypal')->name('paypal');
+Route::post('/ipn','PaypalController@paypalIpn')->name('paypalIpn');
 

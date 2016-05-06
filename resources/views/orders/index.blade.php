@@ -2,7 +2,7 @@
 @section('body')
     <div class="wrapper">
         @include('layouts.header')
-        @include('layouts.sidebar')
+        @include('layouts.sidebar', ['active'=>'orders'])
                 <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
             <!-- Content Header (Page header) -->
@@ -11,28 +11,14 @@
                     Orders
                     <small>Manage Orders</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li><a href="#">Orders</a></li>
-                    <li class="active">List All Orders</li>
-                </ol>
+
             </section>
 
             <!-- Main content -->
             <section class="content">
 
                 <!-- Default box -->
-                <div class="box">
-                    <div class="box-header with-border">
 
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse" data-toggle="tooltip"
-                                    title="Collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove" data-toggle="tooltip" title="Remove">
-                                <i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <div class="box-body">
                         <div class="row">
                             <div class="col-xs-12">
                                 <div class="box">
@@ -57,9 +43,11 @@
                                             <tbody>
                                             <tr>
                                                 <th>ID</th>
-                                                <th>Date</th>
-                                                <th>Time</th>
+                                                <th>Date & Time</th>
+                                                <th>Post Code</th>
+                                                <th>Name</th>
                                                 <th>Payment Method</th>
+                                                <th>Order Date</th>
                                             </tr>
                                             @foreach($orders as $order)
                                                 <tr>
@@ -67,27 +55,29 @@
                                                         <a href="{{route('viewOrder',['id'=>$order->id])}}">{{$order->id}}</a>
                                                     </td>
                                                     <td>
-                                                        <a href="{{route('viewOrder',['id'=>$order->id])}}">{{$order->order_details->date}}</a>
+                                                        <a href="{{route('viewOrder',['id'=>$order->id])}}">{{$order->order_details->date}} {{$order->order_details->time}}</a>
                                                     </td>
-                                                    <td>{{$order->order_details->time}}</td>
+                                                    <td>{{$order->order_details->zip}}</td>
+                                                    <td>{{$order->order_details->name}}</td>
                                                     <td>{{$order->payment_method->label}}</td>
+                                                    <td>{{$order->created_at->format('d.m.Y')}}</td>
                                                 </tr>
                                             @endforeach
                                             </tbody>
                                         </table>
                                     </div>
+                                    <div class="row">
+                                        <div class="col-xs-12" style="text-align: center">
+                                            {{$orders->render()}}
+                                        </div>
+                                    </div>
+
                                     <!-- /.box-body -->
                                 </div>
                                 <!-- /.box -->
                             </div>
                         </div>
-                    </div>
-                    <!-- /.box-body -->
-                    <div class="box-footer">
-                        Footer
-                    </div>
-                    <!-- /.box-footer-->
-                </div>
+
                 <!-- /.box -->
 
             </section>

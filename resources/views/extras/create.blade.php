@@ -18,20 +18,17 @@
                     Extras
                     <small>Manage Extras</small>
                 </h1>
-                <ol class="breadcrumb">
-                    <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-                    <li><a href="#">Extras</a></li>
-                    <li class="active">Create Extra</li>
-                </ol>
             </section>
 
             <!-- Main Content -->
             <section class="content">
-                @include('extras.form', ['headerTitle' => 'Create New Extra',
-                'submitButtonText' => 'Create',
-                'label' => null,
-                'price' => null,
-                'icon' => null,])
+                <div class="row">
+                    @include('extras.form', ['headerTitle' => 'Create New Extra',
+                    'submitButtonText' => 'Create',
+                    'label' => null,
+                    'price' => null,
+                    'icon' => null,])
+                </div>
             </section>
         </div>
     </div>

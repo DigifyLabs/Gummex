@@ -114,7 +114,7 @@
 								<h5 style="line-height: 45px;">Total Price</h5>
 							</div>
 							<div class="col-xs-12 col-md-6">
-								<h3>&euro; <span class="total"></span></h3>
+								<h3>&euro; <span id="finalTotal" class="total"></span></h3>
 							</div>
 						</div>
 					</div>
@@ -455,6 +455,7 @@
 										src="{{asset('webapp/images/bank.png')}}"> Debit
 								</div>
 							</div>
+							{{--
 							<div class="row">
 								<div class="ol-xs-12 col-md-6">
 									<input type="radio" name="payment" value="3" class="payment" > <img
@@ -462,6 +463,7 @@
 									Credit Card
 								</div>
 							</div>
+							--}}
 							<div class="payment_info row bank_payment">
 								<div class="col-xs-12">
 									<p>
@@ -599,13 +601,19 @@
 		});
 		$('.payment').on('click',function(){
 			$('.payment_info').addClass('hidden');
-			$('.'+$(this).val()+"_payment").removeClass('hidden');
-
-			if($('input[name="payment"]:checked').val() == 2)
+			if($('input[name="payment"]:checked').val() == 1)
 			{
-				$('accountName').removeAttr('required')
-				$('accountName').removeAttr('required')
-				$('accountName').removeAttr('required')
+				$('#accountName').removeAttr('required')
+				$('#accountIBAN').removeAttr('required')
+				$('#accountBIC').removeAttr('required')
+				$(".paypal_payment").removeClass('hidden');
+			}
+			else if($('input[name="payment"]:checked').val() == 2)
+			{
+				$('#accountName').attr('required')
+				$('#accountIBAN').attr('required')
+				$('#accountBIC').attr('required')
+				$(".bank_payment").removeClass('hidden');
 			}
 		})
 
